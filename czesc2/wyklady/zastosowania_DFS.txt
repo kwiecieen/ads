@@ -1,0 +1,45 @@
+1. Sortowania topologiczne:
+    dag - directed cyclic graph
+    polega na takim uporządkowaniu wierzchołków dagu od lewej do prawej, że wszystkie krawędzie są skierowane "w prawo"
+    ALGORYTM:
+        -uruchom DFS
+        -w momencie przetworzenia wierzchołka dopisz go na początek tworzonego porządku
+
+2. Znajdowanie cyklu eulera
+    cykl eulera w grafie to cykl który przez każdą krawędź przebiega dokładnie raz
+    spójny graf nieskierowany posiada cykl eulera, gdy każdy wierzchołek ma stopień parzysty
+    ALGORYTM:
+        -wykonujemy DFS, ale zamiast oznaczania wierzchołków jako odwierzone, usuwamy krawędzie po których przeszliśmy
+        -po przetworzeniu wierzchołka dopisujemy go na początku tworzonej listy
+
+3. Silnie spójne składowe
+    wierzchołki u i v w grafie skierowanym G należą do tej samej silnie spójnej składowej jeśli istnieje scieżka
+    skierowana z u do v oraz z v do u
+    ALGORYTM:
+        -wykonaj dfs zapisując czas przetworzenia
+        -odwróć kierunek wszystkich krawędzi
+        -wykonaj DFSvisit w głównej pętli w kolejności malejądych czasów przetworzenia
+        (każde wywołanie DFSvisit w głównej pętli odwiedza wszystkie wierzchołki z jednej silnie spójnej składowej)
+
+4. Znajdowanie mostów w grafie nieskierowanym
+    krawędź e w grafie nieskierowanym G jest mostem jeśli jej usunięcie zwiększa liczbę spójnych składowych grafu.
+    tw. krawędź e jest mostem wtw gdy nie należy do żadnego cyklu prostego
+    Wyobrażamy sobie wykonanie DFS na naszym grafie. Na podstawie czasu odwiedzenia obliczamy następującą funkcję:
+        v - wierzchołek
+        d(v) - czas odwiedzenia
+        low(v) = min(d(v),low(u),d(u)) #cokolwiek to kurwa znaczy
+        (u - dziecko v w DFS)
+    ALGORYTM:
+        1. wykonujemy DFS odliczając dla kazdego wierzcholka v czas odwiedzenia d(V) oraz funkcje low
+        low(v) = min(d(v),d(u),low(u))
+        d(v) - czas odwiedzenia
+        u - dziecko v w DFS
+        low(u) - dziedziczenie low po dzieciach
+        jesli low(v) = d(v) to v i v.parent jest mostem
+
+5. Punkty artykulacji
+    def. wierzchołek jest punktem artykulacji jeśli jego usunięcie zwiększa liczbę spójnych składowych
+    ALGORYTM:
+        wierzchołek jest punktem artykulacji jeśli:
+            a) jest korzeniem drzewa DFS i ma conajmniej dwoje dzieci
+            b) nie jest korzeniem i ma syna s, takiego że low(s)>=d(V)

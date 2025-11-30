@@ -1,0 +1,1 @@
+'''najkrotsze sciezki przy malejących krawędziach'''

@@ -1,0 +1,49 @@
+#minimal spanning tree (MST) #ten angielski mozna sprawdzic xd
+G = (V,E)
+def.
+MST grafu G to zbior krawedzi o minimalnej wadze, ktore wystarczają, żeby istniała ścieżka między każdą parą wierzchołkow
+
+Niech A będzie pewnym podzbiorem krawędzi, rozważamy krawędź e = {u,v}, taką że:
+    1. e nie należy do A
+    2. A suma {e} nie zawiera cyklu
+    3. w(e) jest minimalna wśród krawędzi spełniających warunek 1 i 2
+    WÓWCZAS:
+        jeśli A jest podzbiorem MST to A suma {e} też jest podzbiorem MST
+
+'''ALGORYTM KRUSKALA'''
+    1. A = zbior pusty
+    2. krawedzie posortowane niemalejąco względem wag # czasowa O(ElogV) = O(ElogE)
+    3.
+    for i in range(1, m+1):
+        if A suma {ei} nie ma cyklu:   # skorzystac z find
+            A = A suma {ei}  # union(u,v)
+    4. return A
+
+'''STRUKTURA FIND-UNION''' las zbiorów rozłącznych  # zaamortyzowany czas to O(log*(n)) - nw co to znaczy, ale mała
+    mamy zbior elementów
+    mamy dwie operacje:
+    - union - łączy w zbiory do których należą dane punkty
+    - find - znajduje reprezentanta zbioru  #korzeń drzewa
+
+    class Node:
+        def __init__(self,val):
+            self.parent = self
+            self.value = val
+            self.rank = 0
+    def find(x):
+        if x != x.parent:
+            x.parent = find(x.parent)
+        return x.parent
+    def union(x,y):
+        x = find(x)
+        y = find(y)
+        if x == y: return
+        if x.rank < y.rank:
+            x.parent = y
+        else:
+            y. parent = x
+            if y.rank == x.rank:
+                x.rank += 1
+
+tw. jesli reprezentant ma rangę k to jego drzewo ma wysokość <= k oraz zawiera >= 2^k wezlow
+

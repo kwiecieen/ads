@@ -1,0 +1,4 @@
+AKCEPTOWALNA
+R wywołań Dijkstry (R to tablica resortów)
+WZORCOWA
+Raz dijkstra tylko usuwac krawedzie

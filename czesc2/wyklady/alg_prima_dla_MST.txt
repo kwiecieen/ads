@@ -1,0 +1,8 @@
+ALGORYTM PRIMA DLA MST  #zlozonosc czasowa jak dla dijkstry, O(ElogV) dla listowej i O(V^2) dla macierzowej
+-alg dijkstry ze zmodyfikowaną relaksacją
+
+1. Umieszczamy wszystkie wierzcholki w kolejce z wagą inf
+2. Dla zadanego wierzchołka zmieniamy wagę na 0
+3. Póki kolejka niepusta:
+    - wyjmij wierzchołek u z kolejki ( o minimalnej wadze)
+    - dla każdej krawędzi {u, v} jeśli w(u,v) < waga -v-w-kolejce, zmieniamy wagę v na w(u,v) i wstaw parent v na u

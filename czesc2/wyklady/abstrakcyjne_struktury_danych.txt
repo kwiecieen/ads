@@ -1,0 +1,37 @@
+struktura danych to coś, co realizuje pewien kontrakt(listę operacji) ze swoim użytkownikiem
+1. Tablica(coś co pozwala odwoływać się do pól po numerach(put,get))
+2. Lista jednokierunkowa(coś co pozwala wędrować od początku do końca i wstawiać lub usuwać elementy za iteratorem)
+3. Lista dwukierunkowa(coś co pozwala wędrować w przód i w tył i wstawiać/usuwać przed lub za iteratorem)
+class DLNode:
+   def __init__(self, val):
+       self.prev = None
+       self.next = None
+       self.val = val
+4. Stos(push(S,x)-odloz na stos, pop(S)-zdejmij ze stosu)
+implementacja listowa:
+class Node:
+   def __init__(self, val):
+       self.next = None
+       self.val = val
+class Stack:
+   def __init__(self):
+       self.top = None
+   def push(x)
+   def pop()
+implementacja tablicowa:
+gdy końćzy się miejsce w tablicy to alokuję dwa razy większą i kopiuję do niej zawartość stosu
+5. Kolejka(put-wstaw do kolejki, get-wyjmij z kolejki)
+implementacja listowa:
+jak kolejka w sklepie, get usuwa z poczatku, put dodaje na koniec
+implemetacja tablicowa:
+zamiast przechowywac head i tail lepiej wziac head i liczbe elementow
+6. Kolejka priorytetetowa(insert - wstaw, extraxt Min/extract Max - wyjmij minc/max)
+implemetacja:
+ - kopiec binarny z heap sorta
+ - nieposortowana tablica
+7. SLownik/Mapa/Tablica asocjacyjna(coś jak tablica, ale można indeksować dowolnym typem elementów)
+implementacje naiwne:
+ - drzewa wyszukiwań binarnych
+ - tablice haszujące
+wyjasnienie do drzewa wyszukiwań binarnych(skrót. BST):
+element x po srodku, w drzewie po lewewj wstawiamy mniejsze elementy, w drzewie po prawej większe

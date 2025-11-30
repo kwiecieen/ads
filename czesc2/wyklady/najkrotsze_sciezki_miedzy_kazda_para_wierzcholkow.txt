@@ -1,0 +1,20 @@
+najkrotsze_sciezki_miedzy_kazda_para_wierzcholkow
+rozwiazanie najprostsze:
+    wykonac alg Dijkstry lub Bellmana - Forda z każdego wierzchołka  # Dijkstry O(VElogV), BF O(V^2 E)
+
+'''ALGORYTM FLOYDA - WARSHALLA''' - specjalizowany algorytm do tego polecenia
+    - dziala dla rep. macierzowej
+    - W - macierz wag
+    - W[u][v] - waga krawedzi miedzy u i v
+    # no i fajrancik
+    # cos tu gadal jeszcze
+
+    ALGORYTM:   # zlozonosc czasowa (V^3)
+    S = W
+    for k in range(1, n+1):
+        for u in V:
+            for v in V:
+                S[u][v] = min( S[u][v], S[u][k] + S[k][v] ) # S to ta najkrotsza sciezka
+                # mozna obliczac tez macierz parentow
+
+

@@ -1,0 +1,22 @@
+''' ALGROYTM PODSTAWOWY, ale:
+    a)skacze bezposrednio do "waznych" wierzcholkow
+    b)nie wymaga liczb naturalnych, ale wymaga nieujemnych
+
+G = (V,E)
+s - wierzcholek startowy
+v.d oszacowanie odleglosci od s
+v.parent - poprzednik
+
+ALGORYTM:   zlozonosc czasowa: O(ElogV)  (dla rezprezentacji macierzowej lepiej zrobic O(V^2))
+    1. Wszystkie wierzchołki otrzymują wartość v.d = inf i są utrzymywane w kolejce priorytetowej
+    2. s.d = 0 (uaktualnia kolejkę)
+    3. Wyciągamy z kolejki Q wierzchołek u o min wartosci u.d
+    dla kazdej krawedzi z u do v wykojnemy relaksację (proste wymuszenie nierownosci trojkata)
+    def relax(u,v):
+        if u.d + w(u,v) < v.d:
+            v.d = u.d + w(u,v)
+            v.parent = u
+
+
+tw. w momencie gdy alg. Dijkstry wyciąga wierzcholek u z kolejki to wartosc u.d jest rowna najmniejszej odleglosci
+'''

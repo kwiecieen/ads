@@ -1,0 +1,11 @@
+algorytmy grafowe
+graf skierowany G = (V,E), gdzie V to zbior wierzcholkow, E zbior krawedzi (dopuszczamy cykle)
+graf nieskierowany możemy rozumieć jako graf skierowany, gdzie istnienie krawędzi uv implikuje istnienie krawędzi vu
+alternatywnie: w gragie nieskierowanym mamy zbiór krawędzi E (e1, an) gdzie każda krawędź ai to dwuelementowy podbiór V
+najczęściej złożoność określa się mocami zbioru V i E
+
+REPREZENTACJA GRAFU
+1. lista krawędzi (12, 13, 41, 23) (zlozonosc pamieciowa O(E))
+2. macierz sąsiedztwa (dwuwymiarowa tablica, 1 gdy mamy krawedz, 0 gdy nie mamy)(zlozonosc pamieciowa O(V^2))
+(dla grafów nieskierowanych wystarcza połowa macierzy)
+3. listy sąsiedztwa (tyle list ile wierzchołow)(zlozonosc pamieciowa O(V+E))

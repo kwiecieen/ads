@@ -1,0 +1,20 @@
+#najkrotsze sciezki
+#graf skierowany i wagi mogą być ujemne   # zlozonosc czasowa O(VE)
+# G = (V,E)
+#najktosze sciezki
+1. Inicjalizacja
+    for v in V:
+        v.d = inf
+        v.parent = None
+    s.d = 0 # s to wierzcholek startowy należący do V
+2. Praca
+    for i in range(len(V)-1):
+        for (u, v) in E:
+            Relax(u, v)
+3. Weryfikacja (może się pojawić cykl o ujemnych wagach, gdzie mozna sie krecic w kolko)
+    for (u,v) in E:
+        if v.d > u.d + w(u,v):
+            ujemny cykl
+        else:
+            wszystko ok
+
