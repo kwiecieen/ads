@@ -1,0 +1,2 @@
+Struktura danych, która zachowuje się jak zwykła tablica, ale może być indeksowana indeksami dowolnego typu
+np. T['słoń'] = 7

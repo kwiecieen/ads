@@ -1,0 +1,23 @@
+funkcja haszująca
+Klucze --> liczba naturalna
+obiekt d z kluczem d.key jest umieszczany na pozycji h(d.key) mod n
+chcemy żeby h zachowywała się chaotycznie --> podobne elementy dają rózne wyniki
+
+ROZWIĄZYWANIE KOLIZJI
+Metoda listowa
+-powyżej 3n elemntów reorganizujemy/powiększamy tablicę
+Adesowanie otwarte  #n powinno być liczbą pierwszą
+-jeśli dane pole jest zajęte to próbujemy innego zgodnie z wzorem:
+    -liniowe: h(d.key)+at  (t to numer próby) (zazywczaj a = 1)
+    -podwójne: dwie funkcje haszujące   h1(d.key) + t*h2(d.key)
+
+TWORZENIE FUNKCJI HASZUJĄCEJ
+-zamiana klucza na liczbę
+-"mieszanie"
+    a) modulo   h(key) = key mod n
+    b) A z przedziału (0,1)     n*( h(key) = A.key mod 1 ) i z tego całego podłoga    A często (pierw5 - 1)/2
+    c) haszowanie uniwersalne    p - duża liczba pierwsza    h(key) = (a * key + b) mod p
+        a ze zbioru {1,...,p-1}
+        b ze zbioru {0,...,p}
+
+

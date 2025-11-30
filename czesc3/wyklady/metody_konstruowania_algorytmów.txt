@@ -1,0 +1,102 @@
+METODY KONSTRUOWANIA ALGORYTMOW
+1. Dziel i zwyciężaj (np. quicksort i mergesort)
+2. Algorytmy zachłanne (żyj chwilą i nie myśl o przyszłości)
+3. Algorytmy dynamiczne (technika implementacji algorytmów rekurencyjnych bez powielania obliczeń)
+
+PROGRAMOWANIE DYNAMICZNE --> CIĄG FIBONACCIEGO
+F0 = 1
+F1 = 1
+Fn = Fn-1 + Fn-2
+
+def fib(n):
+    if n<=1: return 1
+    return fib(n-1) + fib(n-2)
+
+zlozonosc O(((1+pierw5)/2)^n)
+
+#wersja dynamiczna
+def fib(n):
+   F = [1 for _ in range(n+1)]
+   for i in range(2, n+1):
+       F[i] = F[i-1] + F[i-2]
+   return F[n]
+
+zlozonosc liniowa O(n)
+
+
+PROGRAMOWANIE DYNAMICZNE --> NAJDLUZSZY ROSNACY PODCIĄG
+Dane: A - tablica n liczb
+Zadanie: znaleźć niekoniecznie spójny, rosnący podciąg
+
+A = [7,3,4,2,6,9,5,9,1]
+1. Znalezienie funkcji, którą będziemy obliczać
+    f(i) = dlugosc najdluzszego podciągu konczącego się na elemencie A[i]
+    | g(i) = rozwiazanie problemu dla tablicy A[0],...,A[i] (przyklad zlego pomyslu)
+2. Wyznaczenie równanie rekurencyjnego dla tej funkcji
+    f(i) = max{ f(j)+1 | j<i and A[j]<A[i] }
+    f(-1) = 0
+
+    A = [7,3,4,2,6,9,5,9,1]
+    f =  1 1 2 1 3 4 3 4 1
+
+3. Odczytanie wyniku:
+    max f(i)
+
+4. Implementacja  # O(n^2)
+def lis(A):
+    maxi = 0
+    n = len(A)
+    F = [1 for _ in range (n))
+    for i in range(1, n):
+        for j in range(i):
+            if A[j]<A[i] and F[j] + 1 > F[i]:
+                F[i] = F[j] + 1
+        if F[i]>F[maxi]: maxi = i
+
+    return F[maxi]
+
+
+mozna rozbudowac jeszcze z tablicą parentów, zeby odtworzyc ten podciąg
+
+
+PROGRAMOWANIE DYNAMICZNE --> PROBLEM IMPREZY FIRMOWEJ
+Treść: mamy drzewo z kolejnymi stanowiskami, na gorze jest szef, kazdy ma swoj wskaznik rozrywkowosci
+Problem imprezy firmowej: znalezc zbior pracownikow ktorych suma wskaznikow rozrywkowosci jest maksymalna,
+ale zaden szef nie spotyka swojego bezposredniego podwladnego
+
+1. Definicja funkcji:
+    f(v) = wartosc najlepszej imprezy, z drzewa T(v)
+    g(v) = wartosc najlepszej imprezy w T(v), na którą v nie idzie
+
+2. Określenie wzorów rekurencyjnych
+    f(v) = max( fun(v) + ∑{u-dzieci v} g(u) , g(v))
+    g(v) = ∑{u-dzieci v} f(u)
+
+3. Odczytanie wyniku:
+    f(root) --> f od korzenia
+
+4. Implementacja
+
+class Emp:
+    def __init__(self,fun):
+        self.emp = []
+        self.fun = fun
+        self.f = -1
+        self.g = -1
+
+def f(v):
+    if v.f != -1: return v.f
+    f1 = v.fun
+    for u in v.emp:
+        f1 += g(v)
+    f2 = g(v)
+    v.f = max(f1,f2)
+    return v.f
+
+def g(v):
+    if v.g != -1: return v.g
+    v.g = 0
+    for u in v.emp:
+        v.g+=f(u)
+    return v.g
+

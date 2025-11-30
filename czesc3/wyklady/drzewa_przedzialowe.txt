@@ -1,0 +1,29 @@
+Interesuje nas struktura danych przechowująca przedziały i potrafiąca odpowiedzieć do których przedziałów należy
+zadany punkt
+PRZYKŁAD
+S = {1, 4, 5, 8, 12, 13, 17}
+robimy sobie przedziały np. [4,12],[8,17],[-inf,12]
+tworzymy zrównoważone drzewo BST zawierające punkty z S
+pod drzewem możemy sobie wyobrazić oś liczbową, na którą rzutujemy elementy drzewa
+każdy liść(None) odpowiada za przedział bazowy, a węzły wewnętrzne odpowiadają za sumy przedziałów bazowych w ich poddrzewach
+Dany przedział (si, sj) przechowywany jest w tych węzłach , w których span mieści się w całości w (si, sj)[i nie zachodzi
+to dla rodzica]
+
+WSTAWIANIE PRZEDZIAŁU     ZLOZONOSC O(logn)
+-zaczyanmy od korzenia
+-jeśli przedział = span danego węzła to przechowujemy go w tym węźle
+-w przeciwnym razie wysyłamy jego przecięcie z lewym synem rek. w lewo, przecięcie z prawym synem w prawo
+
+ODZYSKABIE PRZEDZIAŁÓW ZAWIERAJĄCYCH DANY PUNKT   ZLOZONOSC O(logn + I)
+-znajdujemy przedział bazowy zawierający ten punkt
+-wędrujemy w górę drzewa i zbieramy przedziały które spotykamy po drodze
+
+PRZYKŁAD ZASTOSOWANIA
+np. spadające klocki
+Można rozwiązac prosto n^2, ale drzewo przedziałowe da nam rozwiązanie nlogn
+    - tworzymy zbiór S z początków i końców klocków
+    - tworzymy drzewo przedziałowe
+    - przechowujemy przedziały odpowiadające za fragmenty konstukcji i ich wysokość
+
+
+

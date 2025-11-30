@@ -1,0 +1,24 @@
+DRZEWA CZEROWNO CZARNE
+zadady:
+    -każdy węzeł jest czerowny lub czarny
+    -korzeń jest zawsze czarny
+    -każdy liść (None) jest czarny
+    -czerwony węzeł ma wyłącznie czarne dzieci
+    -zasada czarnej ścieżki: dla ustalonego węzła, ścieżka od niego do dowolnego liścia zawiera tyle samo czarnych węzłow
+
+
+    H(x)<= 2*log(n+1)
+
+
+B - DRZEWA
+uogólnienie drzew BST do sytuacji, gdy węzeł zawiera więcej niż jeden klucz
+b-drzewo ma parametr t
+każdy węzeł ma od t-1 do 2t-1 elementów
+odległość od korzenia do każdego liścia jest taka sama
+Operacje:
+    -min/max
+    -następnik/poprzednik
+    -wstawianie/usuwanie
+
+
+
